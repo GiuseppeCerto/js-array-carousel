@@ -53,7 +53,6 @@ leftBtnElement.addEventListener('click', function () {
 
 // Riproduco il markup delle slides con js
 
-const carouselSection = document.querySelector('.carousel-section')
 
 const slideImages= [
     './img/img-1.jpeg',
@@ -64,27 +63,46 @@ const slideImages= [
     './img/img-6.jpeg'
 ]
 
-carouselSection.innerHTML(
+console.log(slideImages)
 
-`   <div class="slide active">
-        ${slideImages[1]}
-    </div>
-    <div class="slide">
-        ${slideImages[2]}
-    </div>
-    <div class="slide">
-        ${slideImages[3]}
-    </div>
-    <div class="slide">
-        ${slideImages[4]}
-    </div>
-    <div class="slide">
-        ${slideImages[5]}
-    </div>
-    <div class="slide">
-        ${slideImages[6]}
-    </div>
- `
+const carouselSection = document.getElementById('carousel-section')
+
+console.log(carouselSection.innerHTML)
+
+carouselSection.innerHTML = (
+
+`<div class="slide active">
+    <img src="${slideImages[0]}" alt="">
+</div> 
+        
+<div class="slide">
+    <img src="${slideImages[0]}" alt="">
+</div>
+        
+<div class="slide">
+    <img src="${slideImages[0]}" alt="">
+</div>
+        
+<div class="slide">
+    <img src="${slideImages[0]}" alt="">
+</div>
+
+<div class="slide">
+    <img src="${slideImages[0]}" alt="">
+</div>
+
+<div class="slide">
+    <img src="${slideImages[0]}" alt="">
+</div>
+
+<div class="carousel-arrow arrow-left">
+    <i class="fa-solid fa-chevron-left"></i>
+</div>
+
+<div class="carousel-arrow arrow-right">
+    <i class="fa-solid fa-chevron-right"></i>
+</div>`
 )
 
+console.log(carouselSection.innerHTML)
 
