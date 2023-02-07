@@ -95,7 +95,9 @@ leftBtnElement.addEventListener('click', function () {
 	slideCorrente.classList.remove('active')
 
     if(indexActiveSlide > 0){
+        
         indexActiveSlide--
+        
     }else{
         indexActiveSlide = slideElements.length - 1
     }
