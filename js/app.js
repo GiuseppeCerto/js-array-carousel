@@ -5,8 +5,11 @@ const slideElements = document.getElementsByClassName('slide')
 
 let indexActiveSlide = 0
 
+
+
 // Riproduco il markup delle slides con js
 
+// creo un array delle img 
 
 const slideImages= [
     './img/img-1.jpeg',
@@ -17,42 +20,42 @@ const slideImages= [
     './img/img-6.jpg'
 ]
 
+console.log(slideImages)
+
+// rivchiamo il container delle img dall html
 
 const carouselSection = document.getElementById('carousel-section')
 
+let htmlItem
 
-carouselSection.innerHTML += (
+for ( let i = 0; i < slideImages.length; i++  ){
 
-`
-<div class="slide active">
-    <img src="${slideImages[0]}" alt="">
-</div> 
-        
-<div class="slide">
-    <img src="${slideImages[1]}" alt="">
-</div>
-        
-<div class="slide">
-    <img src="${slideImages[2]}" alt="">
-</div>
-        
-<div class="slide">
-    <img src="${slideImages[3]}" alt="">
-</div>
+    let srcImage = slideImages[i]
 
-<div class="slide">
-    <img src="${slideImages[4]}" alt="">
-</div>
+    console.log(slideImages[i])
 
-<div class="slide">
-    <img src="${slideImages[5]}" alt="">
-</div>
-`
-)
+    if (i === 0){
+
+        htmlItem =
+        `<div class="slide active">
+            <img src="${srcImage}" alt="">
+        </div>`
+
+    }else {
+        htmlItem =
+        `<div class="slide">
+            <img src="${srcImage}" alt="">
+        </div>`
+    }
+
+    carouselSection.innerHTML += htmlItem
+}
+
+
 
 const rightBtnElement = document.getElementById('btnright')
 
-
+const lastIndex = slideElements.length - 1
 // Creare un carolsello con 6 img
 
 rightBtnElement.addEventListener('click', function () {
@@ -63,19 +66,17 @@ rightBtnElement.addEventListener('click', function () {
 
 	slideCorrente.classList.remove('active')
 
-	indexActiveSlide += 1
+    if(indexActiveSlide < lastIndex){
+
+        indexActiveSlide += 1
+
+    }else{
+        indexActiveSlide = 0
+    }
 
 	let prossimaSlide = slideElements[indexActiveSlide]
 
 	prossimaSlide.classList.add('active')
-
-    if(indexActiveSlide >= 5){
-
-        slideElements[0]
-
-        prossimaSlide.classList.add('active')
-
-    }
 
 })
 
@@ -93,7 +94,11 @@ leftBtnElement.addEventListener('click', function () {
 
 	slideCorrente.classList.remove('active')
 
-	indexActiveSlide -= 1
+    if(indexActiveSlide > 0){
+        indexActiveSlide--
+    }else{
+        indexActiveSlide = slideElements.length - 1
+    }
 
 	let precedenteSlide = slideElements[indexActiveSlide]
 
